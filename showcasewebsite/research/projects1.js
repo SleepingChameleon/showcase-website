@@ -32,7 +32,7 @@ const GROUP1_PROJECTS = [
     paperSubject:  'Subject Name',
     paperType:     'PT 1: Insertion',
     paperImage:    '',                       // filename or ''
-    paperLink:     '#',                      // 🔗 paste your Google Drive link here
+    paperLink:     'https://docs.google.com/document/d/1QwZeTXXQgiaRmeJ833rdva85nYwNbji9byMFxh_Q-10/edit?tab=t.0',                      // 🔗 paste your Google Drive link here
   },
   {
     id: 3,
@@ -45,6 +45,6 @@ const GROUP1_PROJECTS = [
     paperSubject:  'Subject Name',
     paperType:     'PT 1: Insertion',
     paperImage:    '',
-    paperLink:     '#',                      // 🔗 paste your Google Drive link here
+    paperLink:     'https://docs.google.com/document/d/13qSvfxqW5_ip5Nf4bYHZKQWgHfY3hLQo6oLlC82LvoQ/edit?tab=t.0',                      // 🔗 paste your Google Drive link here
   },
 ];
