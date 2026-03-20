@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Class Project Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <!-- ─── NAV ─── -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Class<span>Showcase</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <button class="nav-btn" onclick="openAddModal()">+ Add Project</button>
+    </ul>
+    <button class="nav-btn" id="navBtnTop" onclick="openAddModal()" style="display:none">+ Add</button>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span> Class of 2025 · Project Showcase
+    </div>
+    <h1>Where <em>Ideas</em> Come<br>to Life</h1>
+    <p class="hero-sub">A curated gallery of projects built by our classmates — from web apps and data dashboards to creative experiments and research.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">Browse Projects</a>
+      <button class="btn-secondary" onclick="openAddModal()">Submit Yours</button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num" id="statProjects">6</span>
+        <span class="stat-label">Projects</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="statStudents">6</span>
+        <span class="stat-label">Students</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Categories</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FILTER BAR ─── -->
+  <section class="filter-section" id="projects">
+    <h2>All Projects</h2>
+    <div class="filter-bar" id="filterBar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="Web App">Web App</button>
+      <button class="filter-btn" data-filter="Mobile">Mobile</button>
+      <button class="filter-btn" data-filter="Data / ML">Data / ML</button>
+      <button class="filter-btn" data-filter="Design">Design</button>
+      <button class="filter-btn" data-filter="Game">Game</button>
+      <button class="filter-btn" data-filter="Research">Research</button>
+    </div>
+  </section>
+
+  <!-- ─── SEARCH ─── -->
+  <div class="search-wrap">
+    <div class="search-input-wrap">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input class="search-input" type="text" id="searchInput" placeholder="Search projects or classmates…" oninput="renderCards()"/>
+    </div>
+  </div>
+
+  <!-- ─── PROJECTS GRID ─── -->
+  <div class="projects-grid" id="grid"></div>
+
+  <!-- ─── FOOTER ─── -->
+  <footer id="about">
+    <strong>ClassShowcase</strong> — Built with ❤️ to celebrate the work of every student.
+  </footer>
+
+  <!-- ─── VIEW MODAL ─── -->
+  <div class="modal-overlay" id="viewModal" onclick="handleOverlayClick(event)">
+    <div class="modal modal-wrapper">
+      <button class="modal-close-btn" onclick="closeModal('viewModal')">✕</button>
+      <div class="modal-thumb" id="vmThumb"></div>
+      <div class="modal-content">
+        <div class="modal-tags" id="vmTags"></div>
+        <div class="modal-title" id="vmTitle"></div>
+        <div class="modal-desc" id="vmDesc"></div>
+        <div class="modal-meta">
+          <div class="meta-item">
+            <span class="meta-label">Author</span>
+            <span class="meta-value" id="vmAuthor"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Category</span>
+            <span class="meta-value" id="vmCategory"></span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Year</span>
+            <span class="meta-value" id="vmYear"></span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <a href="#" class="btn-primary" id="vmLink" target="_blank">View Project →</a>
+          <button class="btn-secondary" onclick="closeModal('viewModal')">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── ADD PROJECT MODAL ─── -->
+  <div class="modal-overlay" id="addModal" onclick="handleOverlayClick(event)">
+    <div class="modal modal-wrapper">
+      <button class="modal-close-btn" onclick="closeModal('addModal')">✕</button>
+      <div style="padding: 2rem;">
+        <h2 style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--blue-deep);margin-bottom:1.5rem;letter-spacing:-.5px;">
+          Add a Project
+        </h2>
+
+        <div class="form-group">
+          <label class="form-label">Project Title *</label>
+          <input class="form-input" id="fTitle" placeholder="My Awesome Project" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Short Description *</label>
+          <textarea class="form-textarea" id="fDesc" placeholder="What does your project do?"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Your Name *</label>
+            <input class="form-input" id="fAuthor" placeholder="Juan dela Cruz" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Role / Course</label>
+            <input class="form-input" id="fRole" placeholder="BSIT 3-A" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Category *</label>
+            <select class="form-select" id="fCategory">
+              <option value="">Select category</option>
+              <option>Web App</option>
+              <option>Mobile</option>
+              <option>Data / ML</option>
+              <option>Design</option>
+              <option>Game</option>
+              <option>Research</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Emoji / Icon</label>
+            <input class="form-input" id="fEmoji" placeholder="🚀" maxlength="2" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Project URL (optional)</label>
+          <input class="form-input" id="fLink" placeholder="https://..." type="url" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Tags (comma-separated)</label>
+          <input class="form-input" id="fTags" placeholder="React, Firebase, UI/UX" />
+        </div>
+
+        <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.5rem;">
+          <button class="btn-primary" onclick="submitProject()">Add Project</button>
+          <button class="btn-secondary" onclick="closeModal('addModal')">Cancel</button>
+        </div>
+
+        <p id="formError" class="form-error"></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
