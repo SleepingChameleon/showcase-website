@@ -6,7 +6,6 @@
   <title>Group 1 — Class Project Showcase</title>
   <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
-  <script src="research/projects1.js"></script>
   <style>
 
     /* ─── GROUP HERO ─── */
@@ -268,78 +267,6 @@
     }
     .back-link:hover { gap: .65rem; }
 
-    /* ─── RESEARCH PAPER CARDS ─── */
-    .research-card {
-      background: rgba(255,255,255,0.9);
-      border: 1px solid rgba(30,86,199,.12);
-      border-radius: 16px; overflow: hidden;
-      display: flex; flex-direction: column;
-      transition: transform .35s cubic-bezier(0.34,1.56,0.64,1), box-shadow .35s;
-      animation: fadeUp .5s ease both;
-      box-shadow: 0 6px 24px rgba(30,86,199,.07);
-    }
-    .research-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 48px rgba(30,86,199,.15);
-      border-color: rgba(30,86,199,.25);
-    }
-    .research-card-thumb {
-      height: 160px; position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 16px 16px 0 0;
-    }
-    .research-card-type {
-      position: absolute; top: 10px; left: 12px;
-      font-size: .68rem; font-weight: 700;
-      background: var(--blue-brand); color: #fff;
-      padding: .25rem .7rem; border-radius: 6px;
-      letter-spacing: .04em; text-transform: uppercase;
-      z-index: 2;
-    }
-    .research-card-body {
-      padding: 1.3rem 1.4rem; flex: 1;
-      display: flex; flex-direction: column; gap: .5rem;
-    }
-    .research-card-subject {
-      font-size: .72rem; font-weight: 700; letter-spacing: .07em;
-      text-transform: uppercase; color: var(--blue-brand);
-    }
-    .research-card-title {
-      font-family: 'Urbanist', sans-serif;
-      font-size: 1.05rem; font-weight: 800;
-      background: linear-gradient(135deg, #0a1628, #1e56c7);
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      background-clip: text; line-height: 1.3;
-    }
-    .research-card-abstract {
-      font-size: .82rem; color: var(--text-muted);
-      line-height: 1.65; font-weight: 400; flex: 1;
-    }
-    .research-card-footer {
-      display: flex; align-items: center; justify-content: space-between;
-      padding-top: .9rem; margin-top: auto;
-      border-top: 1px solid rgba(30,86,199,.08);
-    }
-    .research-card-author {
-      display: flex; align-items: center; gap: .5rem;
-    }
-    .research-card-author-name {
-      font-size: .8rem; font-weight: 500; color: var(--text-main);
-    }
-
-    /* ─── FEATURED PROJECTS GRID ─── */
-    .featured-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.8rem;
-    }
-    @media (max-width: 900px) {
-      .featured-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 560px) {
-      .featured-grid { grid-template-columns: 1fr; }
-    }
-
     @media (max-width: 768px) {
       .flip-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
       .flip-card { height: 420px; }
@@ -385,15 +312,6 @@
     <div class="section-title">Our Members & Projects</div>
     <div class="section-sub">Click any student card to flip it and see their project.</div>
     <div class="flip-grid" id="flipGrid"></div>
-  </section>
-
-  <hr style="border:none;border-top:1px solid rgba(30,86,199,.1);max-width:1150px;margin:0 auto;"/>
-
-  <!-- FEATURED PROJECTS SECTION -->
-  <section class="section-wrap" id="projects">
-    <div class="section-title">Research Papers</div>
-    <div class="section-sub">Click "Open Doc" to view the full paper on Google Drive, or "View" to preview the image.</div>
-    <div class="featured-grid" id="featuredGrid"></div>
   </section>
 
   <!-- BACK -->
@@ -458,87 +376,66 @@
     const members = [
       {
         id: 1,
+        // STUDENT INFO
         name: 'Hanudin III P. Pahm', course: 'BSIT 3-A', role: 'Leader', initials: 'HP',
+        // PROJECT INFO
         projectTitle: 'Limited Hands, Growing Needs',
-        projectAbstract: 'An Insertion on the Lack of Manpower at the Field of Dreams Children\'s Charity Foundation. This paper explores how manpower is essential in social work, particularly in children\'s charity, and how the lack of volunteers affects the care and development of children in orphanages.',
-        projectSubject: 'Fratelli Tutti',
-        projectType: 'PT 1: Insertion',
+        projectDesc: 'An Insertion on the Lack of Manpower at the Field of Dreams Children\'s Charity Foundation. This paper explores how manpower is essential in social work, particularly in children\'s charity, and how the lack of volunteers affects the care and development of children in orphanages.',
+        projectTags: ['PT 1', 'Insertion', 'Fratelli Tutti', 'Research'],
         projectEmoji: '📄',
         projectImage: 'hanudin-project.jfif',
         projectLink: '#',
-        projectTags: ['PT 1', 'Insertion', 'Fratelli Tutti'],
-        projectDesc: 'An Insertion on the Lack of Manpower at the Field of Dreams Children\'s Charity Foundation.',
         projectCategory: 'Research',
       },
       {
         id: 2,
-        name: 'Student Two', course: 'BSIT 3-A', role: 'Member', initials: 'S2',
-        projectTitle: 'Research Paper Title Two',
-        projectAbstract: 'Write the abstract or summary of this research paper here. Describe the topic, the problem being addressed, and the key findings or arguments of the study.',
-        projectSubject: 'Subject Name',
-        projectType: 'PT 1: Insertion',
-        projectEmoji: '📄',
-        projectImage: '',
+        name: 'Student Two', course: 'BSIT 3-A', role: 'Developer', initials: 'S2',
+        projectTitle: 'Project Two',
+        projectDesc: 'A short description of Student Two\'s project. Edit this to explain what it does and what tech was used.',
+        projectTags: ['Flutter', 'Dart'],
+        projectEmoji: '📱',
         projectLink: '#',
-        projectTags: ['PT 1', 'Insertion'],
-        projectDesc: 'Write the abstract or summary of this research paper here.',
-        projectCategory: 'Research',
+        projectCategory: 'Mobile',
       },
       {
         id: 3,
-        name: 'Student Three', course: 'BSIT 3-A', role: 'Member', initials: 'S3',
-        projectTitle: 'Research Paper Title Three',
-        projectAbstract: 'Write the abstract or summary of this research paper here. Describe the topic, the problem being addressed, and the key findings or arguments of the study.',
-        projectSubject: 'Subject Name',
-        projectType: 'PT 1: Insertion',
-        projectEmoji: '📄',
-        projectImage: '',
+        name: 'Student Three', course: 'BSIT 3-A', role: 'Designer', initials: 'S3',
+        projectTitle: 'Project Three',
+        projectDesc: 'A short description of Student Three\'s project. Edit this to explain what it does and what tech was used.',
+        projectTags: ['Figma', 'UI/UX'],
+        projectEmoji: '🎨',
         projectLink: '#',
-        projectTags: ['PT 1', 'Insertion'],
-        projectDesc: 'Write the abstract or summary of this research paper here.',
-        projectCategory: 'Research',
+        projectCategory: 'Design',
       },
       {
         id: 4,
-        name: 'Student Four', course: 'BSIT 3-A', role: 'Member', initials: 'S4',
-        projectTitle: 'Research Paper Title Four',
-        projectAbstract: 'Write the abstract or summary of this research paper here. Describe the topic, the problem being addressed, and the key findings or arguments of the study.',
-        projectSubject: 'Subject Name',
-        projectType: 'PT 1: Insertion',
-        projectEmoji: '📄',
-        projectImage: '',
+        name: 'Student Four', course: 'BSIT 3-A', role: 'Developer', initials: 'S4',
+        projectTitle: 'Project Four',
+        projectDesc: 'A short description of Student Four\'s project. Edit this to explain what it does and what tech was used.',
+        projectTags: ['Python', 'Pandas'],
+        projectEmoji: '📊',
         projectLink: '#',
-        projectTags: ['PT 1', 'Insertion'],
-        projectDesc: 'Write the abstract or summary of this research paper here.',
-        projectCategory: 'Research',
+        projectCategory: 'Data / ML',
       },
       {
         id: 5,
-        name: 'Student Five', course: 'BSIT 3-A', role: 'Member', initials: 'S5',
-        projectTitle: 'Research Paper Title Five',
-        projectAbstract: 'Write the abstract or summary of this research paper here. Describe the topic, the problem being addressed, and the key findings or arguments of the study.',
-        projectSubject: 'Subject Name',
-        projectType: 'PT 1: Insertion',
-        projectEmoji: '📄',
-        projectImage: '',
+        name: 'Student Five', course: 'BSIT 3-A', role: 'Researcher', initials: 'S5',
+        projectTitle: 'Project Five',
+        projectDesc: 'A short description of Student Five\'s project. Edit this to explain what it does and what tech was used.',
+        projectTags: ['Research', 'Docs'],
+        projectEmoji: '📝',
         projectLink: '#',
-        projectTags: ['PT 1', 'Insertion'],
-        projectDesc: 'Write the abstract or summary of this research paper here.',
         projectCategory: 'Research',
       },
       {
         id: 6,
-        name: 'Student Six', course: 'BSIT 3-A', role: 'Member', initials: 'S6',
-        projectTitle: 'Research Paper Title Six',
-        projectAbstract: 'Write the abstract or summary of this research paper here. Describe the topic, the problem being addressed, and the key findings or arguments of the study.',
-        projectSubject: 'Subject Name',
-        projectType: 'PT 1: Insertion',
-        projectEmoji: '📄',
-        projectImage: '',
+        name: 'Student Six', course: 'BSIT 3-A', role: 'Presenter', initials: 'S6',
+        projectTitle: 'Project Six',
+        projectDesc: 'A short description of Student Six\'s project. Edit this to explain what it does and what tech was used.',
+        projectTags: ['JS', 'Canvas'],
+        projectEmoji: '🎮',
         projectLink: '#',
-        projectTags: ['PT 1', 'Insertion'],
-        projectDesc: 'Write the abstract or summary of this research paper here.',
-        projectCategory: 'Research',
+        projectCategory: 'Game',
       },
     ];
 
@@ -671,69 +568,7 @@
       document.getElementById('navbar').classList.toggle('mobile-open');
     }
 
-    // ─── FEATURED PROJECTS (from projects1.js) ───
-    function renderFeatured() {
-      const grid = document.getElementById('featuredGrid');
-      const BGSLIST_F = [
-        'linear-gradient(135deg,#dbeafe,#bfdbfe)',
-        'linear-gradient(135deg,#e0eaff,#c7d7ff)',
-        'linear-gradient(135deg,#dce9ff,#b8d4ff)',
-        'linear-gradient(135deg,#e8f0fe,#c7d9ff)',
-        'linear-gradient(135deg,#cfe5ff,#a8c8f5)',
-        'linear-gradient(135deg,#d4e8ff,#b0ccf0)',
-      ];
-
-      GROUP1_PROJECTS.forEach((p, i) => {
-        const card = document.createElement('div');
-        card.className = 'research-card';
-        card.style.animationDelay = (i * 0.1) + 's';
-        card.innerHTML = `
-          <div class="research-card-thumb" style="background:${BGSLIST_F[i]}">
-            ${p.paperImage
-              ? `<img src="${p.paperImage}" alt="${p.paperTitle}" style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:16px 16px 0 0;"/>`
-              : `<span style="font-size:3rem;">📄</span>`
-            }
-            <div class="research-card-type">${p.paperType}</div>
-          </div>
-          <div class="research-card-body">
-            <div class="research-card-subject">${p.paperSubject}</div>
-            <div class="research-card-title">${p.paperTitle}</div>
-            <div class="research-card-abstract">${p.paperAbstract.length > 120 ? p.paperAbstract.slice(0,120)+'…' : p.paperAbstract}</div>
-            <div class="research-card-footer">
-              <div class="research-card-author">
-                <div class="avatar" style="background:${p.studentColor};width:30px;height:30px;border-radius:8px;font-size:.7rem;">${p.studentInitials}</div>
-                <span class="research-card-author-name">${p.studentName}</span>
-              </div>
-              <a href="${p.paperLink !== '#' ? p.paperLink : '#'}"
-                 ${p.paperLink !== '#' ? 'target="_blank"' : ''}
-                 class="card-link"
-                 onclick="${p.paperImage && p.paperLink === '#' ? `openPaperModal(event, ${p.id})` : ''}">
-                ${p.paperLink !== '#' ? 'Open Doc' : p.paperImage ? 'View' : 'Read'}
-                <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>`;
-        grid.appendChild(card);
-      });
-    }
-
-    // Open image-only modal for papers without a Drive link
-    function openPaperModal(e, id) {
-      e.preventDefault();
-      const p = GROUP1_PROJECTS.find(x => x.id === id);
-      if (!p || !p.paperImage) return;
-      document.getElementById('pmImageView').style.display = 'block';
-      document.getElementById('pmDefaultView').style.display = 'none';
-      document.getElementById('pmFullImage').src = p.paperImage;
-      document.getElementById('pmFullImage').alt = p.paperTitle;
-      document.getElementById('projectModalBox').style.background = 'transparent';
-      document.getElementById('projectModalBox').style.boxShadow = 'none';
-      document.getElementById('projectModalBox').style.border = 'none';
-      document.getElementById('projectModal').classList.add('open');
-    }
-
     renderFlipCards();
-    renderFeatured();
   </script>
 </body>
 </html>
