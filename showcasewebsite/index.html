@@ -6,21 +6,110 @@
   <title>Class Project Showcase</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* ─── GROUP CARDS SECTION ─── */
+    .groups-section {
+      max-width: 1100px; margin: 0 auto;
+      padding: 4rem 2rem 2rem;
+      text-align: center;
+    }
+    .groups-section h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem; font-weight: 700;
+      color: var(--blue-deep); margin-bottom: .5rem;
+      letter-spacing: -.5px;
+    }
+    .groups-section p {
+      color: var(--text-muted); font-size: .95rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .groups-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.6rem;
+    }
+
+    .group-card {
+      width: 300px; flex-shrink: 0;
+      background: #fff;
+      border: 1px solid rgba(30,86,199,.1);
+      border-radius: 20px; overflow: hidden;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column;
+      transition: transform .25s, box-shadow .25s, border-color .25s;
+      animation: fadeUp .5s ease both;
+    }
+    .group-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 50px rgba(30,86,199,.13);
+      border-color: rgba(30,86,199,.3);
+    }
+
+    .group-card-banner {
+      height: 130px; display: flex; align-items: center; justify-content: center;
+      font-size: 3.2rem; position: relative; overflow: hidden;
+    }
+    .group-card-banner::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(10,22,40,.1) 100%);
+    }
+
+    .group-card-body {
+      padding: 1.4rem 1.5rem; flex: 1;
+      display: flex; flex-direction: column; gap: .6rem;
+    }
+
+    .group-number {
+      font-size: .75rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--blue-brand);
+    }
+    .group-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.3rem; font-weight: 800;
+      color: var(--blue-deep); line-height: 1.2;
+      text-align: left;
+    }
+    .group-desc {
+      font-size: .86rem; color: var(--text-muted);
+      line-height: 1.6; font-weight: 300;
+      text-align: left;
+    }
+    .group-card-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: auto; padding-top: 1rem;
+      border-top: 1px solid rgba(30,86,199,.08);
+    }
+    .group-member-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 2px solid #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .65rem; font-weight: 600; color: #fff;
+    }
+    .group-arrow {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .82rem; font-weight: 500; color: var(--blue-brand);
+    }
+
+    /* ─── DIVIDER ─── */
+    .section-divider {
+      max-width: 1100px; margin: 3rem auto 0;
+      border: none; border-top: 1px solid rgba(30,86,199,.1);
+    }
+
+    @media (max-width: 600px) {
+      .groups-grid { flex-direction: column; align-items: center; }
+      .group-card { width: 100%; max-width: 340px; }
+      .groups-section { padding: 3rem 1.2rem 1.5rem; }
+    }
+  </style>
 </head>
 <body>
 
   <!-- ─── NAV ─── -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">Class<span>Showcase</span></a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#about">About</a></li>
-      <!-- <button class="nav-btn" onclick="openAddModal()">+ Add Project</button> -->
-    </ul>
-    <button class="nav-btn" id="navBtnTop" onclick="openAddModal()" style="display:none">+ Add</button>
-    <div class="hamburger" id="hamburger" onclick="toggleNav()">
-      <span></span><span></span><span></span>
-    </div>
+    <a href="#" class="nav-logo">Field<span>of</span><span>Berthieu</span></a>
   </nav>
 
   <!-- ─── HERO ─── -->
@@ -31,154 +120,105 @@
     <h1>Where <em>Ideas</em> Come<br>to Life</h1>
     <p class="hero-sub">A curated gallery of projects built by our classmates — from web apps and data dashboards to creative experiments and research.</p>
     <div class="hero-actions">
-      <a href="#projects" class="btn-primary">Browse Projects</a>
-      <!-- <button class="btn-secondary" onclick="openAddModal()">Submit Yours</button> -->
+      <a href="#groups" class="btn-primary">View Groups</a>
     </div>
     <div class="hero-stats">
       <div class="stat-item">
-        <span class="stat-num" id="statProjects">6</span>
+        <span class="stat-num">5</span>
+        <span class="stat-label">Groups</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num" id="statProjects">20</span>
         <span class="stat-label">Projects</span>
       </div>
       <div class="stat-item">
-        <span class="stat-num" id="statStudents">6</span>
+        <span class="stat-num" id="statStudents">29</span>
         <span class="stat-label">Students</span>
       </div>
-      <div class="stat-item">
-        <span class="stat-num">4</span>
-        <span class="stat-label">Categories</span>
-      </div>
     </div>
   </section>
 
-  <!-- ─── FILTER BAR ─── -->
-  <section class="filter-section" id="projects">
-    <h2>All Projects</h2>
-    <div class="filter-bar" id="filterBar">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="Web App">Web App</button>
-      <button class="filter-btn" data-filter="Mobile">Mobile</button>
-      <button class="filter-btn" data-filter="Data / ML">Data / ML</button>
-      <button class="filter-btn" data-filter="Design">Design</button>
-      <button class="filter-btn" data-filter="Game">Game</button>
-      <button class="filter-btn" data-filter="Research">Research</button>
+  <!-- ─── GROUP CARDS ─── -->
+  <section class="groups-section" id="groups">
+    <h2>Browse by Group</h2>
+    <p>Select a group to view their dedicated project showcase page.</p>
+    <div class="groups-grid">
+
+      <a href="group1.html" class="group-card" style="animation-delay:.05s">
+        <div class="group-card-banner" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">🚀</div>
+        <div class="group-card-body">
+          <span class="group-number">Group 01</span>
+          <div class="group-name">Group 1</div>
+          <div class="group-desc">Click to view the projects submitted by Group 1.</div>
+          <div class="group-card-footer">
+            <div class="group-member-dot" style="background:#1e56c7">G1</div>
+            <span class="group-arrow">View Projects →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="group2.html" class="group-card" style="animation-delay:.10s">
+        <div class="group-card-banner" style="background:linear-gradient(135deg,#e0eaff,#c7d7ff)">💡</div>
+        <div class="group-card-body">
+          <span class="group-number">Group 02</span>
+          <div class="group-name">Group 2</div>
+          <div class="group-desc">Click to view the projects submitted by Group 2.</div>
+          <div class="group-card-footer">
+            <div class="group-member-dot" style="background:#2d6ef5">G2</div>
+            <span class="group-arrow">View Projects →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="group3.html" class="group-card" style="animation-delay:.15s">
+        <div class="group-card-banner" style="background:linear-gradient(135deg,#dce9ff,#b8d4ff)">🎯</div>
+        <div class="group-card-body">
+          <span class="group-number">Group 03</span>
+          <div class="group-name">Group 3</div>
+          <div class="group-desc">Click to view the projects submitted by Group 3.</div>
+          <div class="group-card-footer">
+            <div class="group-member-dot" style="background:#0d5ad6">G3</div>
+            <span class="group-arrow">View Projects →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="group4.html" class="group-card" style="animation-delay:.20s">
+        <div class="group-card-banner" style="background:linear-gradient(135deg,#cfe5ff,#a8c8f5)">🌟</div>
+        <div class="group-card-body">
+          <span class="group-number">Group 04</span>
+          <div class="group-name">Group 4</div>
+          <div class="group-desc">Click to view the projects submitted by Group 4.</div>
+          <div class="group-card-footer">
+            <div class="group-member-dot" style="background:#1a3a6b">G4</div>
+            <span class="group-arrow">View Projects →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="group5.html" class="group-card" style="animation-delay:.25s">
+        <div class="group-card-banner" style="background:linear-gradient(135deg,#d4e8ff,#b0ccf0)">🔥</div>
+        <div class="group-card-body">
+          <span class="group-number">Group 05</span>
+          <div class="group-name">Group 5</div>
+          <div class="group-desc">Click to view the projects submitted by Group 5.</div>
+          <div class="group-card-footer">
+            <div class="group-member-dot" style="background:#3b82f6">G5</div>
+            <span class="group-arrow">View Projects →</span>
+          </div>
+        </div>
+      </a>
+
     </div>
   </section>
-
-  <!-- ─── SEARCH ─── -->
-  <div class="search-wrap">
-    <div class="search-input-wrap">
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
-      </svg>
-      <input class="search-input" type="text" id="searchInput" placeholder="Search projects or classmates…" oninput="renderCards()"/>
-    </div>
-  </div>
 
   <!-- ─── PROJECTS GRID ─── -->
   <div class="projects-grid" id="grid"></div>
 
   <!-- ─── FOOTER ─── -->
   <footer id="about">
-    <strong>ClassShowcase</strong> — Built with ❤️ to celebrate the work of every student.
+    <strong>Created by Jumar Larombe</strong> — Built with ❤️ to celebrate the work of every student.
   </footer>
-
-  <!-- ─── VIEW MODAL ─── -->
-  <div class="modal-overlay" id="viewModal" onclick="handleOverlayClick(event)">
-    <div class="modal modal-wrapper">
-      <button class="modal-close-btn" onclick="closeModal('viewModal')">✕</button>
-      <div class="modal-thumb" id="vmThumb"></div>
-      <div class="modal-content">
-        <div class="modal-tags" id="vmTags"></div>
-        <div class="modal-title" id="vmTitle"></div>
-        <div class="modal-desc" id="vmDesc"></div>
-        <div class="modal-meta">
-          <div class="meta-item">
-            <span class="meta-label">Author</span>
-            <span class="meta-value" id="vmAuthor"></span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Category</span>
-            <span class="meta-value" id="vmCategory"></span>
-          </div>
-          <div class="meta-item">
-            <span class="meta-label">Year</span>
-            <span class="meta-value" id="vmYear"></span>
-          </div>
-        </div>
-        <div class="modal-actions">
-          <a href="#" class="btn-primary" id="vmLink" target="_blank">View Project →</a>
-          <button class="btn-secondary" onclick="closeModal('viewModal')">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ─── ADD PROJECT MODAL ─── -->
-  <div class="modal-overlay" id="addModal" onclick="handleOverlayClick(event)">
-    <div class="modal modal-wrapper">
-      <button class="modal-close-btn" onclick="closeModal('addModal')">✕</button>
-      <div style="padding: 2rem;">
-        <h2 style="font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--blue-deep);margin-bottom:1.5rem;letter-spacing:-.5px;">
-          Add a Project
-        </h2>
-
-        <div class="form-group">
-          <label class="form-label">Project Title *</label>
-          <input class="form-input" id="fTitle" placeholder="My Awesome Project" />
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Short Description *</label>
-          <textarea class="form-textarea" id="fDesc" placeholder="What does your project do?"></textarea>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Your Name *</label>
-            <input class="form-input" id="fAuthor" placeholder="Juan dela Cruz" />
-          </div>
-          <div class="form-group">
-            <label class="form-label">Role / Course</label>
-            <input class="form-input" id="fRole" placeholder="BSIT 3-A" />
-          </div>
-        </div>
-
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label">Category *</label>
-            <select class="form-select" id="fCategory">
-              <option value="">Select category</option>
-              <option>Web App</option>
-              <option>Mobile</option>
-              <option>Data / ML</option>
-              <option>Design</option>
-              <option>Game</option>
-              <option>Research</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Emoji / Icon</label>
-            <input class="form-input" id="fEmoji" placeholder="🚀" maxlength="2" />
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Project URL (optional)</label>
-          <input class="form-input" id="fLink" placeholder="https://..." type="url" />
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Tags (comma-separated)</label>
-          <input class="form-input" id="fTags" placeholder="React, Firebase, UI/UX" />
-        </div>
-
-        <div style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:.5rem;">
-          <button class="btn-primary" onclick="submitProject()">Add Project</button>
-          <button class="btn-secondary" onclick="closeModal('addModal')">Cancel</button>
-        </div>
-
-        <p id="formError" class="form-error"></p>
-      </div>
     </div>
   </div>
 

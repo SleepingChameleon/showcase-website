@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Group 1 — Class Project Showcase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;500;600;700;800&family=Inter+Tight:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+
+    /* ─── GROUP HERO ─── */
+    .group-hero {
+      min-height: 52vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      background: linear-gradient(180deg, #f8faff 0%, #f0f4ff 50%, #e8f0fe 100%);
+      position: relative; overflow: hidden;
+    }
+    .group-hero::before {
+      content: ''; position: absolute; top: -100px; right: -100px;
+      width: 420px; height: 420px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(45,110,245,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .group-hero::after {
+      content: ''; position: absolute; bottom: -60px; left: -60px;
+      width: 320px; height: 320px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(30,86,199,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .group-hero-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(255,255,255,0.6); color: var(--blue-brand);
+      border: 1px solid rgba(30,86,199,.25); border-radius: 100px;
+      padding: .5rem 1.2rem; font-size: .82rem; font-weight: 600;
+      margin-bottom: 1.5rem; backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(30,86,199,.12);
+      animation: fadeUp .5s ease both;
+    }
+    .group-hero-badge-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--blue-brand); animation: pulse 2.5s ease-in-out infinite;
+    }
+    .group-hero h1 {
+      font-family: 'Urbanist', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 800; line-height: 1.1;
+      background: linear-gradient(135deg, #0a1628 0%, #1e56c7 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; letter-spacing: -1.5px;
+      margin-bottom: 1rem;
+      animation: fadeUp .6s .1s ease both;
+    }
+    .group-hero p {
+      max-width: 500px; font-size: 1rem; line-height: 1.75;
+      color: var(--text-muted); font-weight: 400;
+      animation: fadeUp .6s .2s ease both;
+    }
+    .group-hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;
+      margin-top: 2rem;
+      animation: fadeUp .6s .3s ease both;
+    }
+    .flip-hint {
+      margin-top: 1rem;
+      display: inline-flex; align-items: center; gap: .4rem;
+      font-size: .82rem; color: var(--text-muted);
+      animation: fadeUp .6s .4s ease both;
+    }
+
+    /* ─── SECTION WRAPPER ─── */
+    .section-wrap {
+      max-width: 1150px; margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+    .section-title {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 1.7rem; font-weight: 800;
+      background: linear-gradient(135deg, #0a1628 0%, #1e56c7 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; letter-spacing: -.5px;
+      margin-bottom: .4rem;
+    }
+    .section-sub {
+      font-size: .93rem; color: var(--text-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    /* ─── FLIP CARD GRID ─── */
+    .flip-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    /* ─── FLIP CARD WRAPPER ─── */
+    .flip-card {
+      height: 420px;
+      perspective: 1200px;
+      cursor: pointer;
+      animation: fadeUp .5s ease both;
+    }
+
+    .flip-card-inner {
+      position: relative; width: 100%; height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .65s cubic-bezier(0.4, 0.2, 0.2, 1);
+      border-radius: 22px;
+    }
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    /* ─── FRONT ─── */
+    .flip-front, .flip-back {
+      position: absolute; inset: 0;
+      border-radius: 22px;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      overflow: hidden;
+    }
+
+    .flip-front {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(30,86,199,.13);
+      box-shadow: 0 8px 32px rgba(30,86,199,.09);
+      display: flex; flex-direction: column;
+      backdrop-filter: blur(8px);
+    }
+
+    .flip-front-photo {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+    .flip-front-photo-inner {
+      width: 88px; height: 88px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Urbanist', sans-serif;
+      font-size: 2rem; font-weight: 800; color: #fff;
+      background: var(--gradient-primary);
+      box-shadow: 0 10px 30px rgba(30,86,199,.3);
+      z-index: 1;
+    }
+    .flip-front-photo-label {
+      position: absolute; bottom: 10px; right: 12px;
+      font-size: .68rem; font-weight: 600; color: var(--blue-brand);
+      background: rgba(255,255,255,.8); border-radius: 6px;
+      padding: .2rem .55rem; backdrop-filter: blur(4px);
+      border: 1px solid rgba(30,86,199,.15);
+    }
+
+    .flip-front-body {
+      padding: 1.2rem 1.5rem; flex: 1;
+      display: flex; flex-direction: column; gap: .4rem;
+    }
+    .flip-role-badge {
+      display: inline-flex;
+      font-size: .68rem; font-weight: 700; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--blue-brand);
+      background: rgba(30,86,199,.08); border-radius: 6px;
+      padding: .2rem .6rem; width: fit-content;
+      border: 1px solid rgba(30,86,199,.15);
+    }
+    .flip-name {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      color: var(--blue-deep); line-height: 1.2;
+    }
+    .flip-course {
+      font-size: .8rem; color: var(--text-muted);
+    }
+
+    .flip-front-footer {
+      padding: .9rem 1.5rem;
+      border-top: 1px solid rgba(30,86,199,.08);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .flip-cta {
+      font-size: .8rem; font-weight: 600; color: var(--blue-brand);
+      display: flex; align-items: center; gap: .35rem;
+    }
+    .flip-icon {
+      font-size: 1rem; animation: bounceX 1.6s ease-in-out infinite;
+    }
+    @keyframes bounceX {
+      0%,100% { transform: translateX(0); }
+      50% { transform: translateX(5px); }
+    }
+
+    /* ─── BACK ─── */
+    .flip-back {
+      transform: rotateY(180deg);
+      display: flex; flex-direction: column;
+      color: #fff;
+    }
+
+    .flip-back-banner {
+      height: 130px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.2rem; position: relative;
+      border-radius: 22px 22px 0 0;
+      flex-shrink: 0;
+    }
+    .flip-back-banner::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(10,22,40,.18) 100%);
+      border-radius: 22px 22px 0 0;
+    }
+
+    .flip-back-body {
+      background: #fff;
+      flex: 1; padding: 1.2rem 1.5rem;
+      display: flex; flex-direction: column; gap: .5rem;
+      border-radius: 0 0 22px 22px;
+      overflow-y: auto;
+      min-height: 0;
+    }
+    .flip-back-tags {
+      display: flex; gap: .4rem; flex-wrap: wrap;
+    }
+    .flip-back-title {
+      font-family: 'Urbanist', sans-serif;
+      font-size: 1.15rem; font-weight: 800;
+      background: linear-gradient(135deg, #0a1628, #1e56c7);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text; line-height: 1.2;
+    }
+    .flip-back-desc {
+      font-size: .82rem; color: var(--text-muted);
+      line-height: 1.6; font-weight: 400; flex: 1;
+    }
+    .flip-back-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: .8rem;
+      border-top: 1px solid rgba(30,86,199,.08);
+      margin-top: auto;
+      flex-shrink: 0;
+      padding-bottom: .3rem;
+    }
+    .flip-back-link {
+      font-size: .8rem; font-weight: 600; color: var(--blue-brand);
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: .3rem;
+      transition: gap .2s;
+    }
+    .flip-back-link:hover { gap: .5rem; }
+    .flip-back-close {
+      font-size: .75rem; color: var(--text-muted);
+      cursor: pointer; font-weight: 500;
+      background: none; border: none; padding: 0;
+      font-family: 'Inter Tight', sans-serif;
+    }
+
+    /* ─── BACK LINK ─── */
+    .back-link-wrap {
+      max-width: 1150px; margin: 0 auto;
+      padding: 0 2rem 4rem;
+    }
+    .back-link {
+      color: var(--blue-brand); font-size: .9rem;
+      font-weight: 600; text-decoration: none;
+      display: inline-flex; align-items: center; gap: .4rem;
+      transition: gap .2s;
+    }
+    .back-link:hover { gap: .65rem; }
+
+    @media (max-width: 768px) {
+      .flip-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+      .flip-card { height: 420px; }
+      .section-wrap { padding: 3rem 1.2rem 4rem; }
+    }
+    @media (max-width: 480px) {
+      .flip-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">FieldofBerthieu</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">← All Groups</a></li>
+      <li><a href="#members">Members</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="group-hero">
+    <div class="group-hero-badge">
+      <span class="group-hero-badge-dot"></span> Class of 2025 · Group 1
+    </div>
+    <h1>Meet Group 1</h1>
+    <p>Six students, six projects. Click any card to flip it and see their project!</p>
+    <div class="group-hero-actions">
+      <a href="#members" class="btn-primary">Meet the Members</a>
+      <a href="index.html" class="btn-secondary">← All Groups</a>
+    </div>
+    <div class="flip-hint">
+      🖱️ Click a card to flip it and reveal the project
+    </div>
+  </section>
+
+  <!-- MEMBERS + FLIP CARDS -->
+  <section class="section-wrap" id="members">
+    <div class="section-title">Our Members & Projects</div>
+    <div class="section-sub">Click any student card to flip it and see their project.</div>
+    <div class="flip-grid" id="flipGrid"></div>
+  </section>
+
+  <!-- BACK -->
+  <div class="back-link-wrap">
+    <a href="index.html" class="back-link">← Back to All Groups</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <strong>ClassShowcase</strong> — Group 1 · Built with ❤️ to celebrate the work of every student.
+  </footer>
+
+  <!-- PROJECT MODAL -->
+  <div class="modal-overlay" id="projectModal" onclick="handleOverlayClick(event)">
+    <div class="modal modal-wrapper" id="projectModalBox">
+      <button class="modal-close-btn" onclick="closeProjectModal()">✕</button>
+      <div id="pmImageView" style="display:none;">
+        <img id="pmFullImage" src="" alt="Project"
+          style="width:100%;border-radius:22px;display:block;max-height:90vh;object-fit:contain;"/>
+      </div>
+      <div id="pmDefaultView">
+        <div class="modal-thumb" id="pmThumb" style="border-radius:22px 22px 0 0; font-size:5rem; display:flex; align-items:center; justify-content:center; height:220px;"></div>
+        <div class="modal-content">
+          <div class="modal-tags" id="pmTags"></div>
+          <div class="modal-title" id="pmTitle"></div>
+          <div class="modal-desc" id="pmDesc"></div>
+          <div class="modal-meta">
+            <div class="meta-item">
+              <span class="meta-label">Author</span>
+              <span class="meta-value" id="pmAuthor"></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Category</span>
+              <span class="meta-value" id="pmCategory"></span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Course</span>
+              <span class="meta-value" id="pmCourse"></span>
+            </div>
+          </div>
+          <div class="modal-actions">
+            <a href="#" class="btn-primary" id="pmLink" target="_blank">View Project →</a>
+            <button class="btn-secondary" onclick="closeProjectModal()">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const BGSLIST = [
+      'linear-gradient(135deg,#dbeafe,#bfdbfe)',
+      'linear-gradient(135deg,#e0eaff,#c7d7ff)',
+      'linear-gradient(135deg,#dce9ff,#b8d4ff)',
+      'linear-gradient(135deg,#e8f0fe,#c7d9ff)',
+      'linear-gradient(135deg,#cfe5ff,#a8c8f5)',
+      'linear-gradient(135deg,#d4e8ff,#b0ccf0)',
+    ];
+    const COLORS = ['#1e56c7','#2d6ef5','#0d5ad6','#1a3a6b','#3b82f6','#0ea5e9'];
+
+    // ── Edit student & project data here ──
+    const members = [
+      {
+        id: 1,
+        // STUDENT INFO
+        name: 'Hanudin III P. Pahm', course: 'BSIT 3-A', role: 'Leader', initials: 'HP',
+        // PROJECT INFO
+        projectTitle: 'Limited Hands, Growing Needs',
+        projectDesc: 'An Insertion on the Lack of Manpower at the Field of Dreams Children\'s Charity Foundation. This paper explores how manpower is essential in social work, particularly in children\'s charity, and how the lack of volunteers affects the care and development of children in orphanages.',
+        projectTags: ['PT 1', 'Insertion', 'Fratelli Tutti', 'Research'],
+        projectEmoji: '📄',
+        projectImage: 'hanudin-project.jfif',
+        projectLink: '#',
+        projectCategory: 'Research',
+      },
+      {
+        id: 2,
+        name: 'Student Two', course: 'BSIT 3-A', role: 'Developer', initials: 'S2',
+        projectTitle: 'Project Two',
+        projectDesc: 'A short description of Student Two\'s project. Edit this to explain what it does and what tech was used.',
+        projectTags: ['Flutter', 'Dart'],
+        projectEmoji: '📱',
+        projectLink: '#',
+        projectCategory: 'Mobile',
+      },
+      {
+        id: 3,
+        name: 'Student Three', course: 'BSIT 3-A', role: 'Designer', initials: 'S3',
+        projectTitle: 'Project Three',
+        projectDesc: 'A short description of Student Three\'s project. Edit this to explain what it does and what tech was used.',
+        projectTags: ['Figma', 'UI/UX'],
+        projectEmoji: '🎨',
+        projectLink: '#',
+        projectCategory: 'Design',
+      },
+      {
+        id: 4,
+        name: 'Student Four', course: 'BSIT 3-A', role: 'Developer', initials: 'S4',
+        projectTitle: 'Project Four',
+        projectDesc: 'A short description of Student Four\'s project. Edit this to explain what it does and what tech was used.',
+        projectTags: ['Python', 'Pandas'],
+        projectEmoji: '📊',
+        projectLink: '#',
+        projectCategory: 'Data / ML',
+      },
+      {
+        id: 5,
+        name: 'Student Five', course: 'BSIT 3-A', role: 'Researcher', initials: 'S5',
+        projectTitle: 'Project Five',
+        projectDesc: 'A short description of Student Five\'s project. Edit this to explain what it does and what tech was used.',
+        projectTags: ['Research', 'Docs'],
+        projectEmoji: '📝',
+        projectLink: '#',
+        projectCategory: 'Research',
+      },
+      {
+        id: 6,
+        name: 'Student Six', course: 'BSIT 3-A', role: 'Presenter', initials: 'S6',
+        projectTitle: 'Project Six',
+        projectDesc: 'A short description of Student Six\'s project. Edit this to explain what it does and what tech was used.',
+        projectTags: ['JS', 'Canvas'],
+        projectEmoji: '🎮',
+        projectLink: '#',
+        projectCategory: 'Game',
+      },
+    ];
+
+    function renderFlipCards() {
+      const grid = document.getElementById('flipGrid');
+      members.forEach((m, i) => {
+        const wrapper = document.createElement('div');
+        wrapper.className = 'flip-card';
+        wrapper.style.animationDelay = (i * 0.08) + 's';
+        wrapper.dataset.id = m.id;
+
+        wrapper.innerHTML = `
+          <div class="flip-card-inner">
+
+            <!-- FRONT: Student Info -->
+            <div class="flip-front">
+              <div class="flip-front-photo" style="background:${BGSLIST[i]}">
+                <div class="flip-front-photo-inner">${m.initials}</div>
+                <span class="flip-front-photo-label">📷 Photo</span>
+              </div>
+              <div class="flip-front-body">
+                <span class="flip-role-badge">${m.role}</span>
+                <div class="flip-name">${m.name}</div>
+                <div class="flip-course">${m.course}</div>
+              </div>
+              <div class="flip-front-footer">
+                <span class="flip-cta">See Project <span class="flip-icon">→</span></span>
+                <span style="font-size:.72rem;color:var(--text-muted);">click to flip</span>
+              </div>
+            </div>
+
+            <!-- BACK: Project Info -->
+            <div class="flip-back">
+              <div class="flip-back-banner" style="background:${BGSLIST[i]}">
+                ${m.projectEmoji}
+              </div>
+              <div class="flip-back-body">
+                <div class="flip-back-tags">
+                  ${m.projectTags.map(t => `<span class="tag">${t}</span>`).join('')}
+                </div>
+                <div class="flip-back-title">${m.projectTitle}</div>
+                <div class="flip-back-desc">${m.projectDesc}</div>
+                <div class="flip-back-footer">
+                  <button class="btn-primary" style="font-size:.78rem;padding:.5rem 1rem;" onclick="openProjectModal(event, ${m.id})">🔍 View Full Project</button>
+                  <button class="flip-back-close" onclick="unflip(event, ${m.id})">↩ Flip back</button>
+                </div>
+              </div>
+            </div>
+
+          </div>`;
+
+        wrapper.addEventListener('click', () => flipCard(m.id));
+        grid.appendChild(wrapper);
+      });
+    }
+
+    function flipCard(id) {
+      const card = document.querySelector(`.flip-card[data-id="${id}"]`);
+      if (card) card.classList.toggle('flipped');
+    }
+
+    function unflip(e, id) {
+      e.stopPropagation();
+      const card = document.querySelector(`.flip-card[data-id="${id}"]`);
+      if (card) card.classList.remove('flipped');
+    }
+
+    function openProjectModal(e, id) {
+      e.stopPropagation();
+      const m = members.find(x => x.id === id);
+      const i = members.indexOf(m);
+      if (!m) return;
+
+      if (m.projectImage) {
+        // Show only the image
+        document.getElementById('pmImageView').style.display = 'block';
+        document.getElementById('pmDefaultView').style.display = 'none';
+        document.getElementById('pmFullImage').src = m.projectImage;
+        document.getElementById('pmFullImage').alt = m.projectTitle;
+        // Make modal background transparent and tight around image
+        document.getElementById('projectModalBox').style.background = 'transparent';
+        document.getElementById('projectModalBox').style.boxShadow = 'none';
+        document.getElementById('projectModalBox').style.border = 'none';
+        document.getElementById('projectModalBox').style.borderRadius = '22px';
+        document.getElementById('projectModalBox').style.overflow = 'hidden';
+      } else {
+        // Show default detail view
+        document.getElementById('pmImageView').style.display = 'none';
+        document.getElementById('pmDefaultView').style.display = 'block';
+        document.getElementById('projectModalBox').style.background = 'rgba(255,255,255,0.95)';
+        document.getElementById('projectModalBox').style.boxShadow = '';
+        document.getElementById('projectModalBox').style.border = '';
+
+        document.getElementById('pmThumb').style.background = BGSLIST[i];
+        document.getElementById('pmThumb').innerHTML = m.projectEmoji;
+        document.getElementById('pmThumb').style.height = '220px';
+        document.getElementById('pmThumb').style.fontSize = '5rem';
+        document.getElementById('pmTags').innerHTML = m.projectTags.map(t => `<span class="tag">${t}</span>`).join('');
+        document.getElementById('pmTitle').textContent = m.projectTitle;
+        document.getElementById('pmDesc').textContent = m.projectDesc;
+        document.getElementById('pmAuthor').textContent = m.name;
+        document.getElementById('pmCategory').textContent = m.projectCategory;
+        document.getElementById('pmCourse').textContent = m.course;
+
+        const lnk = document.getElementById('pmLink');
+        if (m.projectLink && m.projectLink !== '#') {
+          lnk.href = m.projectLink;
+          lnk.style.display = '';
+        } else {
+          lnk.style.display = 'none';
+        }
+      }
+
+      document.getElementById('projectModal').classList.add('open');
+    }
+
+    function closeProjectModal() {
+      document.getElementById('projectModal').classList.remove('open');
+    }
+
+    function handleOverlayClick(e) {
+      if (e.target.classList.contains('modal-overlay')) closeProjectModal();
+    }
+
+    // NAV
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+    });
+    function toggleNav() {
+      document.getElementById('navbar').classList.toggle('mobile-open');
+    }
+
+    renderFlipCards();
+  </script>
+</body>
+</html>
