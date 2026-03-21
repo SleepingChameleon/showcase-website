@@ -98,6 +98,7 @@
       font-size: .9rem; font-weight: 600;
       text-decoration: none; letter-spacing: .02em;
       transition: background .2s, transform .2s;
+      scroll-behavior: smooth;
     }
     .btn-primary:hover { background: #2d6ef5; transform: translateY(-2px); }
 
@@ -126,9 +127,10 @@
     }
 
     .hero {
-      background-image: linear-gradient(rgba(10,22,40,0.6), rgba(10,22,40,0.8)), url('insertion/fieldofhope.jfif');
+      background-image: url('insertion/fieldofhope.jfif');
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
     }
 
     .group-card {
@@ -197,6 +199,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <nav id="navbar">
