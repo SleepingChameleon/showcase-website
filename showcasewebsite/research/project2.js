@@ -7,7 +7,7 @@
 //    3. Copy the link and paste it in projectLink below
 // ─────────────────────────────────────────────
 
-const GROUP1_PROJECTS = [
+const GROUP2_PROJECTS = [
   {
     id: 1,
     studentName:     'Student One',
@@ -17,9 +17,9 @@ const GROUP1_PROJECTS = [
     paperTitle:    'Social Analysis Paper',
     paperAbstract: '',
     paperSubject:  'CST',
-    paperType:     'PT 2',
+    paperType:     'PT 2: ',
     paperImage:    '',                       // filename or ''
-    paperLink:     'https://docs.google.com/document/d/1R8zWC5OjLPDULg1AqBTOIaByG5Mzhh6UfRO6Klap90M/edit?tab=t.0',                      // 🔗 paste your Google Drive link here
+    paperLink:     'https://docs.google.com/document/d/1FpWe9e3AIeFp4IMIeFW7UsD02bsmt2L2P1yM1klRuc4/edit?usp=drivesdk',                      // 🔗 paste your Google Drive link here
   },
   {
     id: 2,
@@ -30,9 +30,9 @@ const GROUP1_PROJECTS = [
     paperTitle:    ' Theological Reflection Paper',
     paperAbstract: '',
     paperSubject:  'CST',
-    paperType:     'PT 3: ',
+    paperType:     'PT 3:',
     paperImage:    '',                       // filename or ''
-    paperLink:     'https://docs.google.com/document/d/1QwZeTXXQgiaRmeJ833rdva85nYwNbji9byMFxh_Q-10/edit?tab=t.0',                      // 🔗 paste your Google Drive link here
+    paperLink:     'https://docs.google.com/document/d/1JO9H5ulSDyQp221agjhC63U8sGOwHQmh4ZPDLiBEAxY/edit?usp=drivesdk',                      // 🔗 paste your Google Drive link here
   },
   {
     id: 3,
@@ -43,8 +43,8 @@ const GROUP1_PROJECTS = [
     paperTitle:    'Action Paper',
     paperAbstract: '',
     paperSubject:  'CST',
-    paperType:     'PT 4: ',
+    paperType:     'PT 4:',
     paperImage:    '',
-    paperLink:     'https://docs.google.com/document/d/13qSvfxqW5_ip5Nf4bYHZKQWgHfY3hLQo6oLlC82LvoQ/edit?tab=t.0',                      // 🔗 paste your Google Drive link here
+    paperLink:     'https://docs.google.com/document/d/1i_ValeyMcgOq03Em1_7Dr2BCDlgjcVpkzwUi25mdHIg/edit?usp=drivesdk',                      // 🔗 paste your Google Drive link here
   },
 ];

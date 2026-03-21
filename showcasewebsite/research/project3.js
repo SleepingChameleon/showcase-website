@@ -7,7 +7,7 @@
 //    3. Copy the link and paste it in projectLink below
 // ─────────────────────────────────────────────
 
-const GROUP1_PROJECTS = [
+const GROUP3_PROJECT = [
   {
     id: 1,
     studentName:     'Student One',
@@ -17,9 +17,9 @@ const GROUP1_PROJECTS = [
     paperTitle:    'Social Analysis Paper',
     paperAbstract: '',
     paperSubject:  'CST',
-    paperType:     'PT 2',
+    paperType:     'PT 2:',
     paperImage:    '',                       // filename or ''
-    paperLink:     'https://docs.google.com/document/d/1R8zWC5OjLPDULg1AqBTOIaByG5Mzhh6UfRO6Klap90M/edit?tab=t.0',                      // 🔗 paste your Google Drive link here
+    paperLink:     'https://docs.google.com/document/d/1gNtJAhne4GVNafUb926JvEzx4RJfzR7mHN0pI8xyIDo/edit?fbclid=IwY2xjawQraWdleHRuA2FlbQIxMABicmlkETF1NG5xWW05bXMwaWxuMkhac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHqIENLO8uGuVIV8HY5cuOYcJmMrYZHSZ2Iy_LfWFR2fcd4yvyjqkD3aDmbZm_aem_fqFLICbKYv15dcyi5wDEWA&tab=t.0',                      // 🔗 paste your Google Drive link here
   },
   {
     id: 2,
@@ -30,9 +30,9 @@ const GROUP1_PROJECTS = [
     paperTitle:    ' Theological Reflection Paper',
     paperAbstract: '',
     paperSubject:  'CST',
-    paperType:     'PT 3: ',
+    paperType:     'PT 3:',
     paperImage:    '',                       // filename or ''
-    paperLink:     'https://docs.google.com/document/d/1QwZeTXXQgiaRmeJ833rdva85nYwNbji9byMFxh_Q-10/edit?tab=t.0',                      // 🔗 paste your Google Drive link here
+    paperLink:     'https://docs.google.com/document/d/1ZFvtpcpd2sgojO6od7Fc6ukh5sNE8Ia-w5u7deWmO1Y/edit?fbclid=IwY2xjawQraXRleHRuA2FlbQIxMABicmlkETF1NG5xWW05bXMwaWxuMkhac3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHm_OdVo-HNjLV5j64qMJZ9K2yj3SHBjBUzA6QIiZ7-pGssS2aO-xW4LxGvLJ_aem_ERX_KM9C2t0ZfaKtrYoa3g&tab=t.0',                      // 🔗 paste your Google Drive link here
   },
   {
     id: 3,
@@ -43,8 +43,8 @@ const GROUP1_PROJECTS = [
     paperTitle:    'Action Paper',
     paperAbstract: '',
     paperSubject:  'CST',
-    paperType:     'PT 4: ',
+    paperType:     'PT 4:',
     paperImage:    '',
-    paperLink:     'https://docs.google.com/document/d/13qSvfxqW5_ip5Nf4bYHZKQWgHfY3hLQo6oLlC82LvoQ/edit?tab=t.0',                      // 🔗 paste your Google Drive link here
+    paperLink:     'https://docs.google.com/document/d/1TuXDqTCyHhqlLcFSIQ8iHFrJ4YUwx7DJelMD--eHZ1M/edit?tab=t.0',                      // 🔗 paste your Google Drive link here
   },
 ];
