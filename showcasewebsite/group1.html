@@ -132,9 +132,10 @@
     }
 
     .flip-front-photo {
-      height: 180px;
+      height: 240px;
       display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden;
+      flex-shrink: 0;
     }
     .flip-front-photo-inner {
       width: 88px; height: 88px; border-radius: 50%;
@@ -565,7 +566,7 @@
               <div class="flip-front-photo" style="background:${BGSLIST[i]};padding:0;overflow:hidden;"> 
                 ${m.photo
                   ? `<img src="${m.photo}" alt="${m.name}"
-                      style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;"/>`
+                      style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"/>`
                   : `<div class="flip-front-photo-inner">${m.initials}</div>`
                 }
               </div>
@@ -576,7 +577,6 @@
               </div>
               <div class="flip-front-footer">
                 <span class="flip-cta">See Project <span class="flip-icon">→</span></span>
-                <span style="font-size:.72rem;color:var(--text-muted);">click to flip</span>
               </div>
             </div>
 
